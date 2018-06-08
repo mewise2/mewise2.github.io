@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title> Ice Cream PONG! </title> 
+			<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script> 
+			<script> 
+				function start(){
+					sjs.open("target", 700, 700)
+					//BALL OBJECT AND PROPERTIES
+					var ball = new sjs.Image("images/m_ice_cream.png");
+						ball.type = "ball";
+						ball.setSize(50,100); 
+						ball.center(); 	
+						ball.pushUp(6);
+						ball.pushRight(4);
+						ball.bounce();
+						ball.friction = 0; 
+					//paddle1
+					var paddle1 = new sjs.Image("images/icecream.png");
+						paddle1.type = "paddle";
+						paddle1.centerH();
+						paddle1.setSize(200,50);
+					//paddle2
+					var paddle2 = new sjs.Image("images/icecream.png");
+						paddle2.type = "paddle";
+						paddle2.center().bottom();
+						paddle2.setSize(200,50);
+					
+						sjs.keyDown(LEFT_KEY, function(){
+							paddle1.pushLeft();
+							paddle2.pushLeft();
+						});
+
+						sjs.keyDown(RIGHT_KEY, function(){
+							paddle1.pushRight();
+							paddle2.pushRight();
+						});
+
+						//Score
+						var score = 0;
+						var score_txt = new sjs.Text("Score: 0", 20, "#3E3126");
+
+						sjs.onHit("ball","paddle", function(ball,paddle){	
+							score = score + 1;
+							score_txt.setText("Score: "+score);
+							sjs.bounceOff(ball, paddle);
+						});
+						
+						sjs.onHit("ball",["top_screen","bottom_screen"], function(){ 
+							window.location = "gameover.html"; 
+						});
+
+					} //end start
+			</script> 
+	</head> 
+		<body onload="start()"> 
+		<div id="target" style="margin:auto;background:#6EDFB6;"></div> 
+	</body> 
+</html> 

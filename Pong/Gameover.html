@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> ICE CREAM MENU! </title>
+    <script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+    <script>
+        function start(){
+        sjs.open("target", 700,700);
+
+        var gameover_text = new sjs.Text("You Tried! Play Again?",28,"#3E3126");
+
+    var restartBtn = new sjs.Button("Restart", function(){
+window.location = "index.html";
+});
+
+restartBtn.center(); 
+} //end start
+    </script>
+</head>
+
+<body onload="start()">
+    <h1> </h1>
+
+    <div id="target" style="margin:auto;background:#6EDFB6;"></div>
+</body>
+
+</html>
